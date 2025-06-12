@@ -1,18 +1,27 @@
 <div class="container">
   <mat-card>
-    <mat-card-title>{{ isEditMode ? "Edit User" : "Create New User" }}</mat-card-title>
+    <mat-card-header>
+      <mat-card-title>{{ isEditMode ? 'Edit User' : 'Create New User' }}</mat-card-title>
+      <mat-card-subtitle>{{
+        isEditMode ? 'Update user details' : 'Add a new user to the system'
+      }}</mat-card-subtitle>
+    </mat-card-header>
     <mat-card-content>
       <div *ngIf="loading" class="loading-spinner">
-        <mat-spinner></mat-spinner>
+        <mat-spinner diameter="48"></mat-spinner>
         <p>Loading user...</p>
       </div>
 
-      <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+      <div *ngIf="error" class="alert alert-danger">
+        <mat-icon>error_outline</mat-icon>
+        {{ error }}
+      </div>
 
       <form [formGroup]="userForm" (ngSubmit)="onSubmit()" *ngIf="!loading">
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline">
           <mat-label>Email</mat-label>
-          <input matInput formControlName="email" required>
+          <input matInput formControlName="email" required />
+          <mat-icon matPrefix>email</mat-icon>
           <mat-error *ngIf="userForm.get('email')?.hasError('required')">
             Email is required
           </mat-error>
@@ -21,35 +30,49 @@
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline">
           <mat-label>Role</mat-label>
           <mat-select formControlName="role" required>
             <mat-option *ngFor="let role of roles" [value]="role">
               {{ role }}
             </mat-option>
           </mat-select>
+          <mat-icon matPrefix>admin_panel_settings</mat-icon>
           <mat-error *ngIf="userForm.get('role')?.hasError('required')">
             Role is required
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
-          <mat-label>{{ isEditMode ? 'New Password (leave blank to keep current)' : 'Password' }}</mat-label>
-          <input matInput type="password" formControlName="password">
+        <mat-form-field appearance="outline">
+          <mat-label>{{
+            isEditMode ? 'New Password (leave blank to keep current)' : 'Password'
+          }}</mat-label>
+          <input matInput type="password" formControlName="password" />
+          <mat-icon matPrefix>lock</mat-icon>
           <mat-error *ngIf="userForm.get('password')?.hasError('required')">
             Password is required
           </mat-error>
-          <mat-error *ngIf="userForm.get('password')?.hasError('minlength')"> 
-            Password must be at least 6 characters 
+          <mat-error *ngIf="userForm.get('password')?.hasError('minlength')">
+            Password must be at least 6 characters
           </mat-error>
         </mat-form-field>
 
         <div class="form-actions">
-          <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid || loading">
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="userForm.invalid || loading"
+          >
             <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
-            {{ isEditMode ? "Update User" : "Create User" }}
+            {{ isEditMode ? 'Update User' : 'Create User' }}
           </button>
-          <button mat-raised-button color="warn" type="button" (click)="router.navigate(['/users'])">
+          <button
+            mat-raised-button
+            color="warn"
+            type="button"
+            (click)="router.navigate(['/users'])"
+          >
             Cancel
           </button>
         </div>
@@ -57,4 +80,3 @@
     </mat-card-content>
   </mat-card>
 </div>
-

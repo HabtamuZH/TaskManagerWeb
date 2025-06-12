@@ -24,6 +24,7 @@ export class DashboardComponent implements OnInit {
   inProgressTasks = 0;
   completedTasks = 0;
   totalUsers = 0;
+
   displayedColumns = ['title', 'status', 'priority', 'dueDate'];
 
   constructor(
@@ -62,7 +63,6 @@ export class DashboardComponent implements OnInit {
     // Load users if admin
     if (this.isAdmin()) {
       this.userService.getUsers().subscribe({
-        // Corrected from taskService.getUsers()
         next: (users) => {
           this.users = users;
           this.totalUsers = users.length;
@@ -72,6 +72,10 @@ export class DashboardComponent implements OnInit {
         },
       });
     }
+  }
+
+  refreshData() {
+    this.loadData();
   }
 
   calculateTaskStatistics() {
@@ -85,16 +89,16 @@ export class DashboardComponent implements OnInit {
     return this.authService.isAdmin();
   }
 
-  navigateToTasks() {
-    this.router.navigate(['/tasks']);
+  navigateToTasks(filter: string) {
+    this.router.navigate(['/tasks'], { queryParams: { status: filter } });
   }
 
   navigateToUsers() {
-    this.router.navigate(['/users']);
+    this.router.navigate(['users']);
   }
 
   navigateToProfile() {
-    this.router.navigate(['/profile']);
+    this.router.navigate(['profile']);
   }
 
   getStatusClass(status: string): string {

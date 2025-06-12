@@ -1,60 +1,73 @@
 <div class="container">
   <mat-card>
-    <mat-card-title>{{ isEditMode ? 'Edit Task' : 'Create New Task' }}</mat-card-title>
+    <mat-card-header>
+      <mat-card-title>{{ isEditMode ? 'Edit Task' : 'Create New Task' }}</mat-card-title>
+      <mat-card-subtitle>{{
+        isEditMode ? 'Update task details' : 'Add a new task to the system'
+      }}</mat-card-subtitle>
+    </mat-card-header>
     <mat-card-content>
       <div *ngIf="loading" class="loading-spinner">
-        <mat-spinner></mat-spinner>
+        <mat-spinner diameter="48"></mat-spinner>
         <p>Loading task...</p>
       </div>
 
-      <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+      <div *ngIf="error" class="alert alert-danger">
+        <mat-icon>error_outline</mat-icon>
+        {{ error }}
+      </div>
 
       <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" *ngIf="!loading && !error">
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline">
           <mat-label>Title</mat-label>
-          <input matInput formControlName="title" required>
+          <input matInput formControlName="title" required />
+          <mat-icon matPrefix>title</mat-icon>
           <mat-error *ngIf="taskForm.get('title')?.hasError('required')">
             Title is required
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline">
           <mat-label>Description</mat-label>
           <textarea matInput formControlName="description"></textarea>
+          <mat-icon matPrefix>description</mat-icon>
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline">
           <mat-label>Status</mat-label>
           <mat-select formControlName="status" required>
             <mat-option *ngFor="let status of statuses" [value]="status">
               {{ status }}
             </mat-option>
           </mat-select>
+          <mat-icon matPrefix>assignment</mat-icon>
           <mat-error *ngIf="taskForm.get('status')?.hasError('required')">
             Status is required
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline">
           <mat-label>Priority</mat-label>
           <mat-select formControlName="priority" required>
             <mat-option *ngFor="let priority of priorities" [value]="priority">
               {{ priority }}
             </mat-option>
           </mat-select>
+          <mat-icon matPrefix>priority_high</mat-icon>
           <mat-error *ngIf="taskForm.get('priority')?.hasError('required')">
             Priority is required
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline">
           <mat-label>Due Date</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="dueDate">
+          <input matInput [matDatepicker]="picker" formControlName="dueDate" />
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
+          <mat-icon matPrefix>event</mat-icon>
         </mat-form-field>
 
-        <mat-form-field appearance="fill" *ngIf="authService.isAdmin()">
+        <mat-form-field appearance="outline" *ngIf="authService.isAdmin()">
           <mat-label>Assigned To</mat-label>
           <mat-select formControlName="assignedToId">
             <mat-option [value]="null">Unassigned</mat-option>
@@ -62,14 +75,25 @@
               {{ user.username }}
             </mat-option>
           </mat-select>
+          <mat-icon matPrefix>person</mat-icon>
         </mat-form-field>
 
         <div class="form-actions">
-          <button mat-raised-button color="primary" type="submit" [disabled]="taskForm.invalid || loading">
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="taskForm.invalid || loading"
+          >
             <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
-            {{ isEditMode ? "Update Task" : "Create Task" }}
+            {{ isEditMode ? 'Update Task' : 'Create Task' }}
           </button>
-          <button mat-raised-button color="warn" type="button" (click)="router.navigate(['/tasks'])">
+          <button
+            mat-raised-button
+            color="warn"
+            type="button"
+            (click)="router.navigate(['/tasks'])"
+          >
             Cancel
           </button>
         </div>
@@ -77,4 +101,3 @@
     </mat-card-content>
   </mat-card>
 </div>
-

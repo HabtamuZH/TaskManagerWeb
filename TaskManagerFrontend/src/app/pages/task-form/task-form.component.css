@@ -1,52 +1,200 @@
+/* Main container with centered content and modern background */
 .container {
-  padding: 20px;
+  padding: 24px;
   max-width: 800px;
   margin: 0 auto;
-}
-
-.spacer {
-  flex: 1 1 auto;
-}
-
-mat-form-field {
-  width: 100%;
-  margin-bottom: 16px;
-}
-
-.form-actions {
-  margin-top: 20px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e2e8f0 100%);
+  min-height: 100vh;
   display: flex;
-  gap: 10px;
+  justify-content: center;
+  align-items: flex-start;
 }
 
-.form-actions button {
-  margin-right: 10px;
+/* Card styling with shadow and hover effect */
+mat-card {
+  width: 100%;
+  max-width: 720px;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+mat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Card title and subtitle */
+mat-card-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #1a1f36;
+  margin-bottom: 8px;
+}
+
+mat-card-subtitle {
+  font-size: 1rem;
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+/* Loading spinner */
 .loading-spinner {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 200px;
+  padding: 48px;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  margin: 24px 0;
 }
 
 .loading-spinner p {
-  margin-top: 20px;
-  color: #666;
+  margin-top: 16px;
+  color: #5f6368;
+  font-size: 1.1rem;
+  font-weight: 500;
 }
 
-.alert {
-  padding: 12px 16px;
+/* Form field styling */
+mat-form-field {
+  width: 100%;
   margin-bottom: 20px;
-  border: 1px solid transparent;
-  border-radius: 4px;
+}
+
+mat-form-field .mat-form-field-label {
+  color: #4b5563;
+  font-weight: 500;
+}
+
+mat-form-field .mat-input-element,
+mat-form-field .mat-select-value {
+  font-size: 1rem;
+  color: #1a1f36;
+}
+
+mat-form-field textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+mat-form-field mat-error {
+  font-size: 0.875rem;
+  color: #dc2626;
+}
+
+/* Datepicker toggle */
+mat-datepicker-toggle {
+  color: #4b5563;
+}
+
+/* Form actions */
+.form-actions {
+  margin-top: 24px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.form-actions button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.form-actions button[color="primary"] {
+  background-color: #3b82f6;
+  color: #ffffff;
+}
+
+.form-actions button[color="primary"]:hover:not(:disabled) {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+}
+
+.form-actions button[color="primary"]:disabled {
+  background-color: #93c5fd;
+  cursor: not-allowed;
+}
+
+.form-actions button[color="warn"] {
+  background-color: #ef4444;
+  color: #ffffff;
+}
+
+.form-actions button[color="warn"]:hover {
+  background-color: #dc2626;
+  transform: translateY(-2px);
+}
+
+/* Spinner in button */
+.form-actions .spinner-border {
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+/* Alert styling */
+.alert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
 }
 
 .alert-danger {
-  color: #721c24;
-  background-color: #f8d7da;
-  border-color: #f5c6cb;
+  color: #991b1b;
+  background-color: #fef2f2;
+  border: 1px solid #fee2e2;
 }
 
+/* Animation for form content */
+mat-card-content {
+  animation: fadeIn 0.5s ease-in;
+}
 
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Spacer for layout */
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .container {
+    padding: 16px;
+  }
+
+  mat-card {
+    padding: 16px;
+  }
+
+  mat-card-title {
+    font-size: 1.5rem;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .form-actions button {
+    width: 100%;
+    padding: 10px;
+  }
+}

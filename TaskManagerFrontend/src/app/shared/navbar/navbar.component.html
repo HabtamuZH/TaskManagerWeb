@@ -1,10 +1,19 @@
 <mat-toolbar color="primary">
-  <span>Task Manager</span>
+  <a class="toolbar-brand" routerLink="/" aria-label="Task Manager Home">
+    <mat-icon>task</mat-icon>
+    <span>Task Manager</span>
+  </a>
   <span class="spacer"></span>
-  <a mat-button routerLink="/dashboard">Dashboard</a>
-  <a mat-button routerLink="/tasks">Tasks</a>
-  <a mat-button routerLink="/users" *ngIf="authService.isAdmin()">Users</a>
-  <a mat-button routerLink="/profile">Profile</a>
-  <a mat-button (click)="logout()">Logout</a>
+  <a mat-button class="nav-link" routerLink="/dashboard" aria-label="Go to Dashboard">Dashboard</a>
+  <a mat-button class="nav-link" routerLink="/tasks" aria-label="Go to Tasks">Tasks</a>
+  <a
+    mat-button
+    class="nav-link"
+    routerLink="/users"
+    *ngIf="authService.isAdmin()"
+    aria-label="Go to Users"
+    >Users</a
+  >
+  <a mat-button class="nav-link" routerLink="/profile" aria-label="Go to Profile">Profile</a>
+  <a mat-button class="nav-link" (click)="logout()" aria-label="Log out">Logout</a>
 </mat-toolbar>
-

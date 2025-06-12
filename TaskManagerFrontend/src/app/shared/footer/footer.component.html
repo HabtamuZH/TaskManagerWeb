@@ -1,31 +1,33 @@
 <footer class="app-footer">
   <div class="footer-content">
     <div class="footer-section">
-      <h4>Task Manager</h4>
-      <p>Efficient task management for teams and individuals</p>
+      <h4>
+        <mat-icon aria-hidden="true" style="vertical-align: middle; margin-right: 8px;">task</mat-icon>
+        Task Manager
+      </h4>
+      <p>Efficient task management for teams and individuals. Streamline your workflow with our intuitive platform.</p>
     </div>
-    
+
     <div class="footer-section">
       <h4>Quick Links</h4>
       <ul>
-        <li><a routerLink="/dashboard">Dashboard</a></li>
-        <li><a routerLink="/tasks">Tasks</a></li>
-        <li><a routerLink="/profile">Profile</a></li>
+        <li><a routerLink="/dashboard" aria-label="Go to Dashboard">Dashboard</a></li>
+        <li><a routerLink="/tasks" aria-label="Go to Tasks">Tasks</a></li>
+        <li><a routerLink="/profile" aria-label="Go to Profile">Profile</a></li>
       </ul>
     </div>
-    
+
     <div class="footer-section">
       <h4>Support</h4>
       <ul>
-        <li><a href="mailto:support@taskmanager.com">Contact Support</a></li>
-        <li><a href="#" (click)="$event.preventDefault()">Help Center</a></li>
-        <li><a href="#" (click)="$event.preventDefault()">Documentation</a></li>
+        <li><a href="mailto:support@taskmanager.com" aria-label="Contact Support via Email">Contact Support</a></li>
+        <li><a href="#" (click)="$event.preventDefault()" aria-label="Visit Help Center">Help Center</a></li>
+        <li><a href="#" (click)="$event.preventDefault()" aria-label="View Documentation">Documentation</a></li>
       </ul>
     </div>
   </div>
-  
+
   <div class="footer-bottom">
-    <p>&copy; {{ currentYear }} Task Manager. All rights reserved.</p>
+    <p>© {{ currentYear }} Task Manager. All rights reserved.</p>
   </div>
 </footer>
-
