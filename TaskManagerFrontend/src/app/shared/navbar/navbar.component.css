@@ -1,0 +1,28 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+mat-toolbar a {
+  margin: 0 8px;
+  text-decoration: none;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+mat-toolbar a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+mat-toolbar span:first-child {
+  font-size: 1.2em;
+  font-weight: 500;
+}
+

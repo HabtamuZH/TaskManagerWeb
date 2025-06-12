@@ -1,0 +1,49 @@
+<div class="container">
+  <mat-card>
+    <mat-card-title>Profile Settings</mat-card-title>
+    <mat-card-content>
+      <div *ngIf="currentUser">
+        <p><strong>Username:</strong> {{ currentUser.username }}</p>
+        <p><strong>Role:</strong> {{ currentUser.role }}</p>
+        <p><strong>Member Since:</strong> {{ currentUser.createdAt | date : 'mediumDate' }}</p>
+      </div>
+
+      <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" required />
+          <mat-error *ngIf="profileForm.get('email')?.hasError('required')">
+            Email is required
+          </mat-error>
+          <mat-error *ngIf="profileForm.get('email')?.hasError('email')">
+            Please enter a valid email
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>New Password</mat-label>
+          <input matInput type="password" formControlName="password" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Confirm New Password</mat-label>
+          <input matInput type="password" formControlName="confirmPassword" />
+          <mat-error *ngIf="profileForm.hasError('mismatch')"> Passwords do not match </mat-error>
+        </mat-form-field>
+
+        <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="profileForm.invalid || loading"
+        >
+          <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
+          Update Profile
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+

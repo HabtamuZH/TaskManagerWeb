@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">
+  <span>Task Manager</span>
+  <span class="spacer"></span>
+  <a mat-button routerLink="/dashboard">Dashboard</a>
+  <a mat-button routerLink="/tasks">Tasks</a>
+  <a mat-button routerLink="/users" *ngIf="authService.isAdmin()">Users</a>
+  <a mat-button routerLink="/profile">Profile</a>
+  <a mat-button (click)="logout()">Logout</a>
+</mat-toolbar>
+

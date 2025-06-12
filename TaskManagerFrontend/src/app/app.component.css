@@ -1,0 +1,23 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding-bottom: 20px;
+}
+
+/* Global styles for consistent spacing */
+.container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Ensure proper spacing for authenticated pages */
+.main-content .container {
+  margin-top: 0;
+}
+
