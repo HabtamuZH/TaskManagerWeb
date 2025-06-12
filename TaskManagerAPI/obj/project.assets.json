@@ -3340,11 +3340,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/habtamu/Downloads/TaskManagerWeb_NavbarFooter_v3/TaskManagerProject/TaskManagerAPI/TaskManagerAPI.csproj",
+      "projectUniqueName": "/home/habtamu/Projects/TaskManagerWeb/TaskManagerAPI/TaskManagerAPI.csproj",
       "projectName": "TaskManagerAPI",
-      "projectPath": "/home/habtamu/Downloads/TaskManagerWeb_NavbarFooter_v3/TaskManagerProject/TaskManagerAPI/TaskManagerAPI.csproj",
+      "projectPath": "/home/habtamu/Projects/TaskManagerWeb/TaskManagerAPI/TaskManagerAPI.csproj",
       "packagesPath": "/home/habtamu/.nuget/packages/",
-      "outputPath": "/home/habtamu/Downloads/TaskManagerWeb_NavbarFooter_v3/TaskManagerProject/TaskManagerAPI/obj/",
+      "outputPath": "/home/habtamu/Projects/TaskManagerWeb/TaskManagerAPI/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/habtamu/.nuget/NuGet/NuGet.Config"

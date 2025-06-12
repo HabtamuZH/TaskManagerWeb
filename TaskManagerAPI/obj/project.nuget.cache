@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "p5Ch+gFTk5voctUdAAh8pFU7jjIql7o5k7tsBAbVFnjcCfswKZTEVNwC3n6F81e9a7EqF6P7tCdeHHCcqqGo+Q==",
+  "dgSpecHash": "1RHHYN8Y8h1za1gXnXWNFFlloZZboSM3xGV7brDD99TQkFJ7rFyhjSGys5jg20xvxRR1ZSgIs5haE6Iv4DomaQ==",
   "success": true,
-  "projectFilePath": "/home/habtamu/Downloads/TaskManagerWeb_NavbarFooter_v3/TaskManagerProject/TaskManagerAPI/TaskManagerAPI.csproj",
+  "projectFilePath": "/home/habtamu/Projects/TaskManagerWeb/TaskManagerAPI/TaskManagerAPI.csproj",
   "expectedPackageFiles": [
     "/home/habtamu/.nuget/packages/bcrypt.net-next/4.0.3/bcrypt.net-next.4.0.3.nupkg.sha512",
     "/home/habtamu/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
